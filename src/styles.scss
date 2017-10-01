@@ -1,5 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/@angular/material/theming";
 @import "~font-awesome/css/font-awesome.min.css";
 @import "~primeng/resources/themes/omega/theme.css";
 @import "~primeng/resources/primeng.min.css";
+@include mat-core();
+
+$nis-app-primary: mat-palette($mat-teal);
+$nis-app-accent: mat-palette($mat-lime, A200, A100, A400);
+$nis-app-warn: mat-palette($mat-red);
+$nis-app-theme: mat-dark-theme($nis-app-primary, $nis-app-accent, $nis-app-warn);
+
+@include angular-material-theme($nis-app-theme);
+
+html, body {
+  margin: 0;
+}
+
+// Not working in dashboard.component-scss
+.mat-expansion-panel {
+  box-shadow: none !important;
+  .mat-expansion-panel-header {
+    padding: 0 16px !important;
+  }
+  .mat-expansion-panel-body {
+    padding: 0 !important;
+    .mat-list-item {
+      padding-left: 25px;
+      padding-right: 16px;
+    }
+  }
+}
