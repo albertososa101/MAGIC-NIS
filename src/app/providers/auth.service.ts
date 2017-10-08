@@ -9,30 +9,34 @@ export class AuthService {
 
   public user: firebase.User;
   public authState$: Observable<firebase.User>;
+  private authProvider: any;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
-    this.user = null;
     this.authState$ = afAuth.authState;
-    this.authState$.subscribe( (user: firebase.User) => {
-      if (user !== null) {
-        this.user = user;
-        this.router.navigate(['dashboard']);
-      }
+    this.authState$.subscribe( user => {
+      console.log('USER', user);
+      this.user = user;
     } );
   }
 
-  loginWithGoogle() {
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+  login(provider: number) {
+    switch (provider) {
+      case 1: this.authProvider = new firebase.auth.FacebookAuthProvider();
+              break;
+      case 2: this.authProvider = new firebase.auth.GoogleAuthProvider();
+              break;
+      case 3: this.authProvider = new firebase.auth.TwitterAuthProvider();
+              break;
+      case 4: this.authProvider = new firebase.auth.GithubAuthProvider();
+    }
+    this.afAuth.auth.signInWithPopup(this.authProvider)
+      .then( success => {
+        console.log('OK', success);
+        this.router.navigate(['dashboard']);
+      })
+      .catch( error => console.error('ERROR', error));
   }
-  loginWithFacebook() {
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
-  }
-  loginWithTwitter() {
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.TwitterAuthProvider());
-  }
-  loginWithGitHub() {
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GithubAuthProvider());
-  }
+
   logout() {
     this.afAuth.auth.signOut().then( success => {
       this.router.navigate(['login']);
@@ -42,5 +46,4 @@ export class AuthService {
   isLoggedIn(): boolean {
     return this.user !== null;
   }
-
 }

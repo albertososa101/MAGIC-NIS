@@ -1,19 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import {
-  MdCardModule,
-  MdButtonModule,
-  MdSidenavModule,
-  MdToolbarModule,
-  MdListModule,
-  MdExpansionModule,
-  MdIconModule
+  MatCardModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 import { AuthService } from './providers/auth.service';
 import { AuthGuardService } from './providers/auth-guard.service';
+import { DataService } from './providers/data.service';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -65,24 +68,26 @@ const fireConfig = {
     CaseStudiesComponent,
     CaseStudyComponent,
     CaseStudyVersionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(fireConfig),
     AngularFireAuthModule,
-    MdCardModule,
-    MdButtonModule,
-    MdSidenavModule,
-    MdToolbarModule,
-    MdListModule,
-    MdExpansionModule,
-    MdIconModule
+    MatCardModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatMenuModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

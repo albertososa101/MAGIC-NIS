@@ -16,14 +16,14 @@ html, body {
   margin: 0;
 }
 
-// Not working in dashboard.component-scss
+// Not working in dashboard.component.scss
 .mat-expansion-panel {
   box-shadow: none !important;
   .mat-expansion-panel-header {
     padding: 0 16px !important;
   }
   .mat-expansion-panel-body {
-    padding: 0 !important;
+    margin: 0 !important;
     .mat-list-item {
       padding-left: 25px;
       padding-right: 16px;

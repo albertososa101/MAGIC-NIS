@@ -20,7 +20,7 @@ export class AuthGuardService implements CanActivate {
      .map(authState => !!authState)
      .do(authenticated => {
        if (!authenticated) {
-         this.router.navigate(['/login']);
+         this.router.navigate(['login']);
        }
      });
   }

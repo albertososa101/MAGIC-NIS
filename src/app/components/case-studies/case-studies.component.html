@@ -1,3 +1,39 @@
-<p>
-  case-studies works!
-</p>
+
+<div class="ui-g">
+  <div class="ui-g-8 ui-sm-12">
+    <!--<mat-list>
+      <span *ngFor="let caseStudy of caseStudies">
+      <mat-list-item>
+        <button mat-icon-button><mat-icon mat-list-icon>add_circle</mat-icon></button>
+        <button mat-icon-button><mat-icon mat-list-icon>info</mat-icon></button>
+
+        <h4 mat-line>{{caseStudy.name}}</h4>
+        <p mat-line>{{caseStudy.description}}</p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      </span>
+    </mat-list>-->
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let caseStudy of caseStudies" class="csContainer">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{ caseStudy.name }}</mat-panel-title>
+          <mat-panel-description>{{ caseStudy.description | limitTo: 30 }}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="details-container">
+          <p>Details of case study</p>
+        </div>
+        <!--<app-case-study caseStudyVersionsPath={{caseStudy.versions}}></app-case-study>-->
+        <mat-action-row>
+          <button mat-button>Go to Versions</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div class="ui-g-4">
+  <div class="drop-zone">
+    DROP ZONE
+  </div>
+  <div class="stats-zone"></div>
+</div>
+</div>

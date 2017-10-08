@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {DataService} from '../../providers/data.service';
 
 @Component({
   selector: 'app-case-study',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CaseStudyComponent implements OnInit {
 
-  constructor() { }
+  @Input() caseStudyVersionsPath: string;
+
+  caseStudyVersions: Object;
+
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getCaseStudy(this.caseStudyVersionsPath)
+      .subscribe( data => this.caseStudyVersions = data);
   }
-
 }

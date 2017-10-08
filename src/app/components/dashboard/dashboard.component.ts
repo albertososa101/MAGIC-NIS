@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../providers/auth.service';
+import { Component } from '@angular/core';
+import { AuthService } from '../../providers/auth.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
-  constructor(private authService: AuthService) { }
+  userName: string;
 
-  ngOnInit() {
+  constructor(private authService: AuthService) {
+    this.userName = authService.user.displayName;
   }
 
   logout() {
     this.authService.logout();
   }
-
 }

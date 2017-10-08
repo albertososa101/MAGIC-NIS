@@ -1,14 +1,18 @@
 @import '../../../styles';
 
-md-toolbar {
+mat-toolbar {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  .fill-space {
+    flex: 1 1 auto;
+  }
 }
 
-md-nav-list {
+mat-nav-list {
   padding-top: 0 !important;
 }
 
 .active-link, .active-link:hover {
-  background-color: mat-color($nis-app-primary);
+  background-color: mat-color($nis-app-primary) !important;
 }
 

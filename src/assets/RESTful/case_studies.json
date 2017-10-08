@@ -1,0 +1,32 @@
+[
+  {
+    "resource": "/case_studies/01",
+    "uuid": "01",
+    "name": "Food in the EU",
+    "oid": "",
+    "internal_code": "CS1_F_E",
+    "description": "Description of Food in the EU case study",
+    "stats":
+    {
+      "n_versions": "3",
+      "n_commands": "4",
+      "n_hierarchies": "2"
+    },
+    "versions": "/case_studies/01/short.json"
+  },
+  {
+    "resource": "/case_studies/02",
+    "uuid": "02",
+    "name": "Water in the EU",
+    "oid": "",
+    "internal_code": "CS1_W_E",
+    "description": "Description of Water in the EU case study",
+    "stats":
+    {
+      "n_versions": "1",
+      "n_commands": "2",
+      "n_hierarchies": ""
+    },
+    "versions": "/case_studies/02/short.json"
+  }
+]
