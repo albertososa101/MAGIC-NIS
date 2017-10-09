@@ -22,7 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HelpComponent } from './components/help/help.component';
-import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { CaseStudiesComponent } from './components/case-studies/case-studies.component';
 import { CaseStudyComponent } from './components/case-study/case-study.component';
 import { CaseStudyVersionComponent } from './components/case-study-version/case-study-version.component';
@@ -37,9 +37,9 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children:
   [
-    { path: '', redirectTo: 'case-studies', pathMatch: 'full' },
-    { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuardService] },
-    { path: 'case-studies', component: CaseStudiesComponent, canActivate: [AuthGuardService] },
+    { path: '', redirectTo: 'case_studies', pathMatch: 'full' },
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+    { path: 'case_studies', component: CaseStudiesComponent, canActivate: [AuthGuardService] },
     { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService] },
     { path: 'help', component: HelpComponent, canActivate: [AuthGuardService] },
   ]
@@ -64,7 +64,7 @@ const fireConfig = {
     DashboardComponent,
     SettingsComponent,
     HelpComponent,
-    EditProfileComponent,
+    ProfileComponent,
     CaseStudiesComponent,
     CaseStudyComponent,
     CaseStudyVersionComponent,

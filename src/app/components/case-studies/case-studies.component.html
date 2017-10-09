@@ -1,38 +1,40 @@
 
 <div class="ui-g">
   <div class="ui-g-8 ui-sm-12">
-    <!--<mat-list>
-      <span *ngFor="let caseStudy of caseStudies">
-      <mat-list-item>
-        <button mat-icon-button><mat-icon mat-list-icon>add_circle</mat-icon></button>
-        <button mat-icon-button><mat-icon mat-list-icon>info</mat-icon></button>
-
-        <h4 mat-line>{{caseStudy.name}}</h4>
-        <p mat-line>{{caseStudy.description}}</p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      </span>
-    </mat-list>-->
-
     <mat-accordion>
       <mat-expansion-panel *ngFor="let caseStudy of caseStudies" class="csContainer">
         <mat-expansion-panel-header>
-          <mat-panel-title>{{ caseStudy.name }}</mat-panel-title>
-          <mat-panel-description>{{ caseStudy.description | limitTo: 30 }}</mat-panel-description>
+          <mat-panel-title>{{ caseStudy.uuid }}</mat-panel-title>
+          <mat-panel-description>{{ caseStudy.name }}</mat-panel-description>
         </mat-expansion-panel-header>
-        <div class="details-container">
-          <p>Details of case study</p>
-        </div>
-        <!--<app-case-study caseStudyVersionsPath={{caseStudy.versions}}></app-case-study>-->
+        <mat-card>
+          <mat-card-title>{{ caseStudy.name }}</mat-card-title>
+          <mat-card-subtitle>{{ caseStudy.description }}</mat-card-subtitle>
+          <mat-card-content>
+            <div class="ui-g">
+              <div class="ui-g-6">
+                <p>Internal code: {{ caseStudy.internal_code }}</p>
+                <p># of versions: {{ caseStudy.stats.n_versions }}</p>
+                <p># of commands in the latest version: {{ caseStudy.stats.n_commands }}</p>
+                <p># of hierarchies in the latest version: {{ caseStudy.stats.n_hierarchies }}</p>
+              </div>
+              <div class="ui-g-6">
+                <div class="drop-zone">
+                  <p>Add new version</p>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
         <mat-action-row>
-          <button mat-button>Go to Versions</button>
+          <button mat-button>See versions</button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
 </div>
 <div class="ui-g-4">
   <div class="drop-zone">
-    DROP ZONE
+    <p>Add new case study</p>
   </div>
   <div class="stats-zone"></div>
 </div>

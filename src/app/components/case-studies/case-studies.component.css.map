@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,YAAa;EACX,KAAK,EAAE,IAAI;;AAGb,UAAW;EACT,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,UAAU;EAClB,aAAa,EAAE,GAAG",
+"mappings": "AAAA,YAAa;EACX,KAAK,EAAE,IAAI;;AAGb,UAAW;EACT,OAAO,EAAE,IAAI;EACb,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,UAAU;EAClB,aAAa,EAAE,GAAG;;AAGpB,2BAA4B;EAC1B,UAAU,EAAE,cAAc",
 "sources": ["case-studies.component.scss"],
 "names": [],
 "file": "case-studies.component.css"
