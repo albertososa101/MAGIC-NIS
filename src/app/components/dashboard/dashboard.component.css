@@ -1312,7 +1312,6 @@ html, body {
   margin: 0; }
 
 .mat-expansion-panel {
-  align-items: center !important;
   box-shadow: none !important; }
   .mat-expansion-panel .mat-expansion-panel-header {
     padding: 0 16px !important; }
@@ -1322,10 +1321,11 @@ html, body {
       padding-left: 25px;
       padding-right: 16px; }
 
+.fill-space {
+  flex: 1 1 auto; }
+
 mat-toolbar {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
-  mat-toolbar .fill-space {
-    flex: 1 1 auto; }
 
 mat-nav-list {
   padding-top: 0 !important; }

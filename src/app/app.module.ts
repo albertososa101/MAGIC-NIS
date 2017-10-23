@@ -14,8 +14,15 @@ import {
   MatListModule,
   MatExpansionModule,
   MatIconModule,
-  MatMenuModule
+  MatMenuModule,
+  MatGridListModule
 } from '@angular/material';
+
+import {
+  OverlayPanelModule,
+  TreeTableModule, SharedModule,
+  GrowlModule
+} from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -31,7 +38,6 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthService } from './providers/auth.service';
 import { AuthGuardService } from './providers/auth-guard.service';
 import { DataService } from './providers/data.service';
-import { TruncatePipe } from './pipes/truncate.pipe';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -40,6 +46,7 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'case_studies', pathMatch: 'full' },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
     { path: 'case_studies', component: CaseStudiesComponent, canActivate: [AuthGuardService] },
+    { path: 'case_study/:id', component: CaseStudyComponent, canActivate: [AuthGuardService] },
     { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService] },
     { path: 'help', component: HelpComponent, canActivate: [AuthGuardService] },
   ]
@@ -68,8 +75,7 @@ const fireConfig = {
     CaseStudiesComponent,
     CaseStudyComponent,
     CaseStudyVersionComponent,
-    PageNotFoundComponent,
-    TruncatePipe
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +91,11 @@ const fireConfig = {
     MatListModule,
     MatExpansionModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    OverlayPanelModule,
+    TreeTableModule, SharedModule,
+    GrowlModule
   ],
   providers: [AuthService, AuthGuardService, DataService],
   bootstrap: [AppComponent]

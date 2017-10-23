@@ -1,7 +1,3 @@
-.csContainer {
-  width: 100%;
-}
-
 .drop-zone {
   padding: 20px;
   text-align: center;
@@ -9,6 +5,13 @@
   border-radius: 5px;
 }
 
-mat-card-content .drop-zone {
-  margin-top: 1em !important;
+.mat-card {
+  //padding-top: 0 !important;
+  mat-card-header {
+    //align-items: center;
+  }
+  .mat-card-image {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
 }

@@ -1,57 +1,20 @@
 {
   "case_study": "01",
   "name": "Food in the EU",
-  "oid": "",
+  "oid": "zenodo.org/2098235",
   "internal_code": "CS1_F_E",
   "resource": "/case_studies/01",
   "description": "Description of Food in the EU Case Study",
   "versions":
-    [
-      {
+  [
+    {
+      "data": {
         "uuid": "01",
         "resource": "/case_studies/01/01",
         "tag": "v0.1",
-        "sessions":
-          [
-            {
-              "uuid": "01",
-              "open_date": "2017-09-20T10:00:00Z",
-              "close_date": "2017-09-20T10:00:10Z",
-              "client": "spreadsheet",
-              "restart": true,
-              "author": "01"
-            }
-          ],
         "detail": "/case_studies/01/01/long.json",
         "generator": "/case_studies/01/01/generator.xlsx",
         "state": "/case_studies/01/01/state.xlsx",
-        "issues":
-          [
-            {
-              "type": "error",
-              "description": "syntax error in command ..."
-            }
-          ]
-
-      },
-      {
-        "uuid": "02",
-        "resource": "/case_studies/01/02",
-        "tag": "v0.2",
-        "sessions":
-        [
-          {
-            "uuid": "01",
-            "open_date": "2017-10-20T10:00:00Z",
-            "close_date": "2017-10-20T10:00:10Z",
-            "client": "spreadsheet",
-            "restart": true,
-            "author": "01"
-          }
-        ],
-        "detail": "/case_studies/01/02/long.json",
-        "generator": "/case_studies/01/02/generator.xlsx",
-        "state": "/case_studies/01/02/state.xlsx",
         "issues":
         [
           {
@@ -59,7 +22,46 @@
             "description": "syntax error in command ..."
           }
         ]
-
-      }
-    ]
+      },
+      "children":
+      [
+        {
+          "data": {
+            "uuid": "01",
+            "open_date": "2017-09-20T10:00:00Z",
+            "close_date": "2017-09-20T10:00:10Z",
+            "client": "spreadsheet",
+            "restart": "true",
+            "author": "01"
+          }
+        }
+      ]
+    },
+    {
+      "data": {
+        "uuid": "02",
+        "resource": "/case_studies/01/02",
+        "tag": "v0.1",
+        "detail": "/case_studies/01/02/long.json",
+        "generator": "/case_studies/01/02/generator.xlsx",
+        "state": "/case_studies/01/02/state.xlsx",
+        "issues":
+        [
+        ]
+      },
+      "children":
+      [
+        {
+          "data": {
+            "uuid": "01",
+            "open_date": "2017-10-20T10:00:00Z",
+            "close_date": "2017-10-20T10:00:10Z",
+            "client": "spreadsheet",
+            "restart": "true",
+            "author": "02"
+          }
+        }
+      ]
+    }
+  ]
 }

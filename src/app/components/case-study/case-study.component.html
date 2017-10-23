@@ -1,3 +1,77 @@
-<p>
-  case-study works! - {{ caseStudyVersionsPath }}
-</p>
+<div class="ui-g">
+  <div class="ui-g-9 ui-g-nopad">
+    <div class="ui-g-12">
+      <div class="preview">
+        <p>PREVIEW ZONE</p>
+      </div>
+    </div>
+    <div class="ui-g-12">
+      <p-treeTable [value]="versions" selectionMode="single" [(selection)]="selectedVersion" (onNodeSelect)="nodeSelect($event)">
+        <p-header>Versions</p-header>
+        <p-column field="uuid" header="UUID"></p-column>
+        <p-column field="close_date" header="Date"></p-column>
+        <p-column field="author" header="Author"></p-column>
+      </p-treeTable>
+    </div>
+  </div>
+  <div class="ui-g-3">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title><h2>{{ caseStudy?.name }}</h2></mat-card-title>
+            <mat-card-subtitle>{{ caseStudy?.description }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="drop-area">
+              Add new version
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-icon-button><mat-icon>share</mat-icon></button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="ui-g-12" *ngIf="selectedNode != null">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title><h2>Selected version</h2></mat-card-title>
+            <mat-card-subtitle><small>UUID: {{ selectedVersion.data.uuid }}</small></mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-icon-button><mat-icon>file_download</mat-icon></button>
+            <button mat-icon-button (click)="showIssues()"><mat-icon>help</mat-icon></button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="ui-g-12">
+        <mat-card>
+          <mat-card-content>
+            <div class="ui-g">
+              <div class="ui-g-6"><mat-icon>assessment</mat-icon></div>
+              <div class="ui-g-6">
+                <h2>{{ caseStudy?.versions.length }}</h2>
+                <small># of versions</small>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="ui-g-12">
+        <mat-card>
+          <mat-card-content>
+            <div class="ui-g">
+              <div class="ui-g-6"><mat-icon>code</mat-icon></div>
+              <div class="ui-g-6">
+                <h2>{{ caseStudy?.internal_code }}</h2>
+                <small>internal code</small>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-growl [(value)]="msgs"></p-growl>

@@ -1,41 +1,29 @@
-
 <div class="ui-g">
-  <div class="ui-g-8 ui-sm-12">
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let caseStudy of caseStudies" class="csContainer">
-        <mat-expansion-panel-header>
-          <mat-panel-title>{{ caseStudy.uuid }}</mat-panel-title>
-          <mat-panel-description>{{ caseStudy.name }}</mat-panel-description>
-        </mat-expansion-panel-header>
-        <mat-card>
-          <mat-card-title>{{ caseStudy.name }}</mat-card-title>
-          <mat-card-subtitle>{{ caseStudy.description }}</mat-card-subtitle>
-          <mat-card-content>
-            <div class="ui-g">
-              <div class="ui-g-6">
-                <p>Internal code: {{ caseStudy.internal_code }}</p>
-                <p># of versions: {{ caseStudy.stats.n_versions }}</p>
-                <p># of commands in the latest version: {{ caseStudy.stats.n_commands }}</p>
-                <p># of hierarchies in the latest version: {{ caseStudy.stats.n_hierarchies }}</p>
-              </div>
-              <div class="ui-g-6">
-                <div class="drop-zone">
-                  <p>Add new version</p>
-                </div>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-        <mat-action-row>
-          <button mat-button>See versions</button>
-        </mat-action-row>
-      </mat-expansion-panel>
-    </mat-accordion>
-</div>
-<div class="ui-g-4">
-  <div class="drop-zone">
-    <p>Add new case study</p>
+  <div class="ui-g-12 ui-lg-3 ui-md-6 ui-sm-12" *ngFor="let caseStudy of caseStudies">
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-image" [ngStyle]="{ 'background-image': 'url(' + caseStudy.thumbnail + ')', 'background-size': 'cover' }">
+        </div>
+        <mat-card-title>{{ caseStudy.name }}</mat-card-title>
+        <mat-card-subtitle><p><small>{{ caseStudy.description }}</small></p></mat-card-subtitle>
+      </mat-card-header>
+      <a [routerLink]="['../case_study', caseStudy.uuid]">
+        <img mat-card-image src="{{ caseStudy.thumbnail }}" alt="">
+      </a>
+      <mat-card-actions style="text-align: right">
+        <button mat-icon-button color="accent" (click)="op.toggle($event)" (mouseover)="op.show($event)" (mouseleave)="op.hide($event)">
+          <mat-icon>info</mat-icon>
+        </button>
+        <button mat-icon-button color="accent">
+          <mat-icon>share</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <p-overlayPanel #op>
+      <p>Internal code: {{ caseStudy.internal_code }}</p>
+      <p># of versions: {{ caseStudy.stats.n_versions }}</p>
+      <p># of commands in the latest version: {{ caseStudy.stats.n_commands }}</p>
+      <p># of hierarchies in the latest version: {{ caseStudy.stats.n_hierarchies }}</p>
+    </p-overlayPanel>
   </div>
-  <div class="stats-zone"></div>
-</div>
 </div>

@@ -8,11 +8,13 @@
     "description": "Description of Food in the EU case study",
     "stats":
     {
-      "n_versions": "3",
+      "n_versions": "2",
       "n_commands": "4",
       "n_hierarchies": "2"
     },
-    "versions": "/case_studies/01/short.json"
+    "versions": "/case_studies/01/short.json",
+    "thumbnail": "/assets/img/case-study-preview.png",
+    "avatar": ""
   },
   {
     "resource": "/case_studies/02",
@@ -25,8 +27,10 @@
     {
       "n_versions": "1",
       "n_commands": "2",
-      "n_hierarchies": ""
+      "n_hierarchies": "3"
     },
-    "versions": "/case_studies/02/short.json"
+    "versions": "/case_studies/02/short.json",
+    "thumbnail": "/assets/img/case-study-preview.png",
+    "avatar": ""
   }
 ]

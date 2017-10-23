@@ -1,0 +1,20 @@
+.preview {
+  border: solid 1px white;
+  text-align: center;
+  vertical-align: middle; }
+  .preview p {
+    padding: 5em; }
+
+.drop-area {
+  border: dashed 2px white;
+  padding: 1em;
+  text-align: center; }
+
+mat-card h1, mat-card h2, mat-card h3, mat-card h4, mat-card h5, mat-card h6 {
+  margin-top: 0 !important; }
+mat-card mat-card-content .material-icons {
+  font-size: 50px !important; }
+mat-card mat-card-actions {
+  text-align: center; }
+
+/*# sourceMappingURL=case-study.component.css.map */

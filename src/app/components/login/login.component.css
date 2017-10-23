@@ -1312,7 +1312,6 @@ html, body {
   margin: 0; }
 
 .mat-expansion-panel {
-  align-items: center !important;
   box-shadow: none !important; }
   .mat-expansion-panel .mat-expansion-panel-header {
     padding: 0 16px !important; }
@@ -1321,6 +1320,9 @@ html, body {
     .mat-expansion-panel .mat-expansion-panel-body .mat-list-item {
       padding-left: 25px;
       padding-right: 16px; }
+
+.fill-space {
+  flex: 1 1 auto; }
 
 .card-container {
   width: 100vw;

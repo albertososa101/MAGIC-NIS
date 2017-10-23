@@ -7,10 +7,10 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getCaseStudiesList() {
-    return this.http.get('../../../assets/RESTful/case_studies.json');
+    return this.http.get('/assets/RESTful/case_studies.json');
   }
 
-  getCaseStudy(caseStudyPath: string) {
-    return this.http.get('../../../assets/RESTful/' + caseStudyPath);
+  getCaseStudy(caseStudyUuid: number) {
+    return this.http.get('/assets/RESTful/case_studies/' + caseStudyUuid + '/short.json');
   }
 }
