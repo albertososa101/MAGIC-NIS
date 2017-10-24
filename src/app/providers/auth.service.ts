@@ -31,7 +31,6 @@ export class AuthService {
     }
     this.afAuth.auth.signInWithPopup(this.authProvider)
       .then( success => {
-        console.log('OK', success);
         this.router.navigate(['dashboard']);
       })
       .catch( error => console.error('ERROR', error));

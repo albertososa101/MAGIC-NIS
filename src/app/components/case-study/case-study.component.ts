@@ -24,7 +24,7 @@ export class CaseStudyComponent implements OnInit {
               private messageService: MessageService) { }
 
   ngOnInit() {
-    this.dataService.getCaseStudy(this.activatedRoute.snapshot.params['id'])
+    this.dataService.getCaseStudy(this.activatedRoute.snapshot.params['case_study_uuid'])
       .subscribe( data => {
         this.caseStudy = data;
         this.versions = <TreeNode[]> data['versions'];
@@ -41,13 +41,11 @@ export class CaseStudyComponent implements OnInit {
   }
 
   showIssues() {
-    let msg: Message;
     if (this.selectedVersion.data.issues.length === 0) {
-      msg = {severity: 'success', summary: 'OK!', detail: 'This version has no issues.'};
+      this.messageService.add({severity: 'success', summary: 'OK!', detail: 'This version has no issues.'});
     } else {
-      msg = {severity: 'warn', summary: 'Warning!', detail: 'Check version issues for more details.'};
+      this.messageService.add({severity: 'warn', summary: 'Warning!', detail: 'Check version issues for more details.'});
     }
-    this.messageService.add(msg);
   }
 
 }

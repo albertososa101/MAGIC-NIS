@@ -7,7 +7,7 @@
         <mat-card-title>{{ caseStudy.name }}</mat-card-title>
         <mat-card-subtitle><p><small>{{ caseStudy.description }}</small></p></mat-card-subtitle>
       </mat-card-header>
-      <a [routerLink]="['../case_study', caseStudy.uuid]">
+      <a [routerLink]="['../case_studies', caseStudy.uuid]">
         <img mat-card-image src="{{ caseStudy.thumbnail }}" alt="">
       </a>
       <mat-card-actions style="text-align: right">

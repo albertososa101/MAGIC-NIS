@@ -39,8 +39,9 @@
             <mat-card-subtitle><small>UUID: {{ selectedVersion.data.uuid }}</small></mat-card-subtitle>
           </mat-card-header>
           <mat-card-actions>
+            <button mat-icon-button [routerLink]="['../../case_studies', caseStudy.case_study, selectedVersion.data.uuid]"><mat-icon>edit</mat-icon></button>
             <button mat-icon-button><mat-icon>file_download</mat-icon></button>
-            <button mat-icon-button (click)="showIssues()"><mat-icon>help</mat-icon></button>
+            <button mat-icon-button (click)="showIssues()"><mat-icon>info</mat-icon></button>
           </mat-card-actions>
         </mat-card>
       </div>

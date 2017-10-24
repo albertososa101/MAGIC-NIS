@@ -41,16 +41,16 @@ import { DataService } from './providers/data.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children:
-  [
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children: [
     { path: '', redirectTo: 'case_studies', pathMatch: 'full' },
-    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-    { path: 'case_studies', component: CaseStudiesComponent, canActivate: [AuthGuardService] },
-    { path: 'case_study/:id', component: CaseStudyComponent, canActivate: [AuthGuardService] },
-    { path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService] },
-    { path: 'help', component: HelpComponent, canActivate: [AuthGuardService] },
-  ]
-  },
+    { path: 'case_studies', component: CaseStudiesComponent },
+    { path: 'case_studies/:case_study_uuid', component: CaseStudyComponent },
+    { path: 'case_studies/:case_study_uuid/:version_uuid', component: CaseStudyVersionComponent },
+    { path: 'profile', component: ProfileComponent },
+    { path: 'settings', component: SettingsComponent },
+    { path: 'help', component: HelpComponent },
+    { path: 'profile', component: ProfileComponent }
+  ]},
   { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

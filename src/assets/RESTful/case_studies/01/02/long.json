@@ -1,0 +1,39 @@
+{
+    "case_study": "<uuid>",
+    "version": "<uuid>",
+    "resource": "/case_studies/<case_study_uuid>/<version_uuid>",
+    "tag": "v0.1",
+    "generator": "/case_studies/<case_study_uuid>/<version_uuid>/generator.xlsx",
+    "state": "/case_studies/<case_study_uuid>/<version_uuid>/state.xlsx",
+    "issues": [
+        {
+            "type": "...",
+            "description": "syntax error in command ..."
+        }
+    ],
+    "sessions": [
+        {
+            "uuid": "<uuid>",
+            "open_date": "2017-09-20T10:00:00Z",
+            "close_date": "2017-09-20T10:00:10Z",
+            "client": "spreadsheet",
+            "restart": "true",
+            "author": "<uuid>",
+            "generator": "/case_studies/<case_study_uuid>/<version_uuid>/<session_uuid>/generator.xlsx",
+            "state": "/case_studies/<case_study_uuid>/<version_uuid>/<session_uuid>/state.xlsx",
+            "issues": [
+                {
+                    "type": "...",
+                    "description": "syntax error in command ..."
+                }
+            ]
+        }
+    ],
+    "commands": [
+        {
+            "type": "...",
+            "label": "...",
+            "definition": "/case_studies/<case_study_uuid>/<version_uuid>/1.json"
+        }
+    ]
+}

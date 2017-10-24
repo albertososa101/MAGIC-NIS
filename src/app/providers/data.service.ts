@@ -13,4 +13,8 @@ export class DataService {
   getCaseStudy(caseStudyUuid: number) {
     return this.http.get('/assets/RESTful/case_studies/' + caseStudyUuid + '/short.json');
   }
+
+  getCaseStudyVersion(caseStudyUuid: number, versionUuid: number) {
+    return this.http.get('/assets/RESTful/case_studies/' + caseStudyUuid + '/' + versionUuid + '/long.json');
+  }
 }
