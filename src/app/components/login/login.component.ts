@@ -9,26 +9,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) {
-  }
+  redirectedFromProvider: boolean;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    // Temporal solution for view access for logged users
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['dashboard']);
-    }
+    this.redirectedFromProvider = (this.authService.getUser() !== null);
   }
 
-  loginWithFacebook() {
-    this.authService.login(1);
+  /**
+   * PROVIDERS:
+   * 1 --> Facebook
+   * 2 --> Google
+   * 3 --> Twitter
+   * 4 --> GitHub
+   */
+  loginWithProvider(provider: number) {
+    this.authService.login(provider);
   }
-  loginWithGoogle() {
-    this.authService.login(2);
-  }
-  loginWithTwitter() {
-    this.authService.login(3);
-  }
-  loginWithGitHub() {
-    this.authService.login(4);
-  }
+
 }

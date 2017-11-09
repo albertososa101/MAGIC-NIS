@@ -14,6 +14,7 @@ $nis-app-theme: mat-dark-theme($nis-app-primary, $nis-app-accent, $nis-app-warn)
 
 html, body {
   margin: 0;
+  font-family: Roboto, Arial, sans-serif;
 }
 
 // Not working in dashboard.component.scss

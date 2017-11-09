@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../providers/auth.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LogoutDialogComponent } from './logout-dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,12 +12,20 @@ import { AuthService } from '../../providers/auth.service';
 export class DashboardComponent {
 
   userName: string;
+  isLoggedIn: boolean;
 
-  constructor(private authService: AuthService) {
-    this.userName = authService.user.displayName;
+  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) {
+    this.authService.getAuthState().subscribe( user => {
+      this.isLoggedIn = (user !== null);
+      this.userName = (this.isLoggedIn) ? user.displayName : 'Sign in';
+    });
   }
 
-  logout() {
-    this.authService.logout();
+  openDialog() {
+    this.dialog.open(LogoutDialogComponent);
+  }
+
+  redirectToLoginPage() {
+    this.router.navigate(['login']);
   }
 }

@@ -15,7 +15,9 @@ import {
   MatExpansionModule,
   MatIconModule,
   MatMenuModule,
-  MatGridListModule
+  MatGridListModule,
+  MatProgressSpinnerModule,
+  MatDialogModule
 } from '@angular/material';
 
 import {
@@ -27,6 +29,7 @@ import {
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LogoutDialogComponent } from './components/dashboard/logout-dialog';
 import { SettingsComponent } from './components/settings/settings.component';
 import { HelpComponent } from './components/help/help.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -41,7 +44,7 @@ import { DataService } from './providers/data.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children: [
+  { path: 'dashboard', component: DashboardComponent, children: [
     { path: '', redirectTo: 'case_studies', pathMatch: 'full' },
     { path: 'case_studies', component: CaseStudiesComponent },
     { path: 'case_studies/:case_study_uuid', component: CaseStudyComponent },
@@ -75,8 +78,10 @@ const fireConfig = {
     CaseStudiesComponent,
     CaseStudyComponent,
     CaseStudyVersionComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LogoutDialogComponent
   ],
+  entryComponents: [LogoutDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -95,7 +100,9 @@ const fireConfig = {
     MatGridListModule,
     OverlayPanelModule,
     TreeTableModule, SharedModule,
-    GrowlModule
+    GrowlModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
   ],
   providers: [AuthService, AuthGuardService, DataService],
   bootstrap: [AppComponent]

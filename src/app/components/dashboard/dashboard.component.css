@@ -1309,7 +1309,8 @@ input.mat-input-element {
   color: inherit; }
 
 html, body {
-  margin: 0; }
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif; }
 
 .mat-expansion-panel {
   box-shadow: none !important; }

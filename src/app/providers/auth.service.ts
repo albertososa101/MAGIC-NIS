@@ -7,42 +7,43 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class AuthService {
 
-  public user: firebase.User;
-  public authState$: Observable<firebase.User>;
-  private authProvider: any;
+  private user: firebase.User;
+  private authState$: Observable<firebase.User>;
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {
     this.authState$ = afAuth.authState;
-    this.authState$.subscribe( user => {
-      console.log('USER', user);
-      this.user = user;
-    } );
-  }
-
-  login(provider: number) {
-    switch (provider) {
-      case 1: this.authProvider = new firebase.auth.FacebookAuthProvider();
-              break;
-      case 2: this.authProvider = new firebase.auth.GoogleAuthProvider();
-              break;
-      case 3: this.authProvider = new firebase.auth.TwitterAuthProvider();
-              break;
-      case 4: this.authProvider = new firebase.auth.GithubAuthProvider();
-    }
-    this.afAuth.auth.signInWithPopup(this.authProvider)
-      .then( success => {
+    this.authState$.subscribe( user => this.user = user );
+    this.afAuth.auth.onAuthStateChanged( user => {
+      if (user) {
         this.router.navigate(['dashboard']);
-      })
-      .catch( error => console.error('ERROR', error));
-  }
-
-  logout() {
-    this.afAuth.auth.signOut().then( success => {
-      this.router.navigate(['login']);
+      }
     });
   }
 
-  isLoggedIn(): boolean {
-    return this.user !== null;
+  login(provider: number) {
+    let authProvider: firebase.auth.AuthProvider;
+    switch (provider) {
+      case 1: authProvider = new firebase.auth.FacebookAuthProvider();
+              break;
+      case 2: authProvider = new firebase.auth.GoogleAuthProvider();
+              break;
+      case 3: authProvider = new firebase.auth.TwitterAuthProvider();
+              break;
+      case 4: authProvider = new firebase.auth.GithubAuthProvider();
+    }
+    this.afAuth.auth.signInWithRedirect(authProvider);
   }
+
+  getAuthState(): Observable<firebase.User> {
+    return this.authState$;
+  }
+
+  getUser() {
+    return this.user;
+  }
+
+  logout() {
+    return this.afAuth.auth.signOut();
+  }
+
 }
