@@ -10,30 +10,36 @@
         <mat-icon matListIcon>help</mat-icon> Help</a>
     </mat-nav-list>
   </mat-sidenav>
-  <!-- primary content -->
-  <mat-toolbar color="primary">
+  <!-- toolbar for no logged users -->
+  <mat-toolbar color="primary" *ngIf="!isLoggedIn">
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>more_vert</mat-icon>
     </button>
     <span>NIS Dashboard</span>
     <span class="fill-space"></span>
     <span>{{ userName }}</span>
-    <span *ngIf="!isLoggedIn">
       <button mat-icon-button (click)="redirectToLoginPage()">
         <mat-icon>account_circle</mat-icon>
       </button>
-    </span>
-    <span *ngIf="isLoggedIn">
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon matListIcon>account_circle</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu" [overlapTrigger]="false">
-        <mat-nav-list>
-          <button mat-menu-item [routerLink]="['profile']">Edit Profile</button>
-          <button mat-menu-item (click)="openDialog()">Logout</button>
-        </mat-nav-list>
-      </mat-menu>
-    </span>
   </mat-toolbar>
+  <!-- toolbar for logged users -->
+  <mat-toolbar color="primary" *ngIf="isLoggedIn">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <span>NIS Dashboard</span>
+    <span class="fill-space"></span>
+    <span>{{ userName }}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon matListIcon>account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <mat-nav-list>
+        <button mat-menu-item [routerLink]="['profile']">Edit Profile</button>
+        <button mat-menu-item (click)="openDialog()">Logout</button>
+      </mat-nav-list>
+    </mat-menu>
+  </mat-toolbar>
+
   <router-outlet></router-outlet>
 </mat-sidenav-container>

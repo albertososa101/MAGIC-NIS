@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../providers/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { LogoutDialogComponent } from './logout-dialog';
+import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 
 @Component({
   selector: 'app-dashboard',

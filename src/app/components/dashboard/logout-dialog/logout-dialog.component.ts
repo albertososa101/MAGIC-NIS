@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { AuthService } from '../../providers/auth.service';
+import { AuthService } from '../../../providers/auth.service';
 
 @Component({
   selector: 'app-logout-dialog',
-  templateUrl: './logout-dialog.html',
-  styleUrls: ['./logout-dialog.scss']
+  templateUrl: './logout-dialog.component.html',
+  styleUrls: ['./logout-dialog.component.scss']
 })
 export class LogoutDialogComponent {
 
