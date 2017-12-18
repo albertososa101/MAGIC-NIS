@@ -1,5 +1,13 @@
 {
   "case_study": "02",
+  "case_study_permissions":
+  {
+    "read": "false",
+    "annotate": "false",
+    "contribute": "false",
+    "share": "false",
+    "delete": "false"
+  },
   "name": "Water in the EU",
   "oid": "zenodo.org/2098235",
   "internal_code": "CS1_W_E",

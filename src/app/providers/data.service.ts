@@ -4,17 +4,28 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class DataService {
 
+  // private host = 'http://localhost:8080';
+  private host = 'http://192.168.100.84:5000';
+  private api_prefix = '/nis_api';
+  private local_base_url = '/assets/RESTful/';
+
   constructor(private http: HttpClient) { }
 
+
   getCaseStudiesList() {
-    return this.http.get('/assets/RESTful/case_studies.json');
+    return this.http.get(this.host + this.api_prefix + '/case_studies/', { withCredentials: true });
   }
 
-  getCaseStudy(caseStudyUuid: number) {
-    return this.http.get('/assets/RESTful/case_studies/' + caseStudyUuid + '/short.json');
+  getCaseStudy(caseStudyUrl: string) {
+    return this.http.get(this.host + caseStudyUrl, { withCredentials: true });
   }
 
-  getCaseStudyVersion(caseStudyUuid: number, versionUuid: number) {
-    return this.http.get('/assets/RESTful/case_studies/' + caseStudyUuid + '/' + versionUuid + '/long.json');
+  getCaseStudyVersion(caseStudyVersionUrl: string) {
+    return this.http.get(this.host + this.api_prefix + caseStudyVersionUrl, { withCredentials: true });
   }
+
+  getViewResource(resourceUrl: string) {
+    return this.http.get(this.host + this.api_prefix + resourceUrl, { withCredentials: true });
+  }
+
 }

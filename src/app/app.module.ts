@@ -47,8 +47,8 @@ const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent, children: [
     { path: '', redirectTo: 'case_studies', pathMatch: 'full' },
     { path: 'case_studies', component: CaseStudiesComponent },
-    { path: 'case_studies/:case_study_uuid', component: CaseStudyComponent },
-    { path: 'case_studies/:case_study_uuid/:version_uuid', component: CaseStudyVersionComponent },
+    { path: 'case_studies/:case_study', component: CaseStudyComponent },
+    { path: 'case_studies/versions/:version_resource', component: CaseStudyVersionComponent },
     { path: 'profile', component: ProfileComponent },
     { path: 'settings', component: SettingsComponent },
     { path: 'help', component: HelpComponent },

@@ -1,0 +1,6 @@
+{
+	"/nis_api/*": {
+		"target": "http://192.168.100.84:5000/",
+		"secure": false
+	}
+}

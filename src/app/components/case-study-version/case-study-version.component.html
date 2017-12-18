@@ -1,3 +1,28 @@
-<p>
-  case-study-version works!
-</p>
+<div class="ui-g">
+
+  <div class="ui-g-4 ui-md-4 ui-sm-12 ui-g-nopad">
+    <div class="ui-g-12">
+      <p-treeTable [value]="commands" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="commandNodeSelect($event)">
+        <p-header>Commands</p-header>
+        <p-column field="type" header="Type"></p-column>
+        <p-column field="label" header="Label"></p-column>
+      </p-treeTable>
+    </div>
+    <div class="ui-g-12">
+      <p-treeTable [value]="variables" selectionMode="single" [(selection)]="selectedNode" (onNodeSelect)="variableNodeSelect($event)">
+        <p-header>Variables</p-header>
+        <p-column field="type" header="Type"></p-column>
+        <p-column field="name" header="Name"></p-column>
+      </p-treeTable>
+    </div>
+  </div>
+
+  <div class="ui-g-8 ui-md-8 ui-sm-12">
+    <div class="ui-g">
+      <div class="ui-g-12" style="background-color: yellow">
+        {{ view }}
+      </div>
+    </div>
+  </div>
+
+</div>

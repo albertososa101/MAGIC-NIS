@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from '../../providers/data.service';
-import {ActivatedRoute} from '@angular/router';
-import {TreeNode} from 'primeng/primeng';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../providers/data.service';
+import { ActivatedRoute } from '@angular/router';
+import { TreeNode } from 'primeng/primeng';
 import { isUndefined } from 'util';
-import { Message } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { AuthService } from '../../providers/auth.service';
 
 @Component({
   selector: 'app-case-study',
@@ -15,16 +15,19 @@ import { MessageService } from 'primeng/components/common/messageservice';
 export class CaseStudyComponent implements OnInit {
 
   caseStudy: any;
+  authService: AuthService;
   versions: TreeNode[];
-  selectedNode: TreeNode;
   selectedVersion: TreeNode;
 
-  constructor(private dataService: DataService,
+  constructor(private _authService: AuthService,
+              private dataService: DataService,
               private activatedRoute: ActivatedRoute,
-              private messageService: MessageService) { }
+              private messageService: MessageService) {
+    this.authService = _authService;
+  }
 
   ngOnInit() {
-    this.dataService.getCaseStudy(this.activatedRoute.snapshot.params['case_study_uuid'])
+    this.dataService.getCaseStudy(this.activatedRoute.snapshot.params['case_study'])
       .subscribe( data => {
         this.caseStudy = data;
         this.versions = <TreeNode[]> data['versions'];
@@ -32,12 +35,8 @@ export class CaseStudyComponent implements OnInit {
   }
 
   nodeSelect(event) {
-    this.selectedNode = event.node;
-    this.updateSelectedVersion(this.selectedNode);
-  }
-
-  private updateSelectedVersion(node: TreeNode) {
-    this.selectedVersion = (isUndefined(node.parent)) ? node : node.parent;
+    this.selectedVersion = (isUndefined(event.node.parent)) ? event.node : event.node.parent;
+    console.log(this.selectedVersion.data.resource);
   }
 
   showIssues() {

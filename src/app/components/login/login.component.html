@@ -4,20 +4,22 @@
     <mat-card-subtitle>Nexus Information System</mat-card-subtitle>
     <mat-card-content>
       <mat-progress-spinner mode="indeterminate" style="margin: 0 auto" *ngIf="redirectedFromProvider"></mat-progress-spinner>
-      <div class="btn-content" *ngIf="!redirectedFromProvider">
-        <button mat-raised-button color="primary" (click)="loginWithProvider(1)">
-          <i class="fa fa-facebook" aria-hidden="true"></i> Login with Facebook
-        </button><br/>
-        <button mat-raised-button color="primary" (click)="loginWithProvider(2)">
-          <i class="fa fa-google" aria-hidden="true"></i> Login with Google
-        </button><br/>
-        <button mat-raised-button color="primary" (click)="loginWithProvider(3)">
-          <i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter
-        </button><br/>
-        <button mat-raised-button color="primary" (click)="loginWithProvider(4)">
-          <i class="fa fa-github" aria-hidden="true"></i> Login with GitHub
-        </button>
-      </div>
+      <ng-container *ngIf="!redirectedFromProvider">
+        <div class="btn-content" >
+          <button mat-raised-button color="primary" (click)="loginWithProvider(1)">
+            <i class="fa fa-facebook" aria-hidden="true"></i> Login with Facebook
+          </button><br/>
+          <button mat-raised-button color="primary" (click)="loginWithProvider(2)">
+            <i class="fa fa-google" aria-hidden="true"></i> Login with Google
+          </button><br/>
+          <button mat-raised-button color="primary" (click)="loginWithProvider(3)">
+            <i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter
+          </button><br/>
+          <button mat-raised-button color="primary" (click)="loginWithProvider(4)">
+            <i class="fa fa-github" aria-hidden="true"></i> Login with GitHub
+          </button>
+        </div>
+      </ng-container>
     </mat-card-content>
   </mat-card>
 </div>

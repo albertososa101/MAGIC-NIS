@@ -1,5 +1,13 @@
 {
   "case_study": "01",
+  "case_study_permissions":
+  {
+    "read": "true",
+    "annotate": "true",
+    "contribute": "true",
+    "share": "true",
+    "delete": "false"
+  },
   "name": "Food in the EU",
   "oid": "zenodo.org/2098235",
   "internal_code": "CS1_F_E",

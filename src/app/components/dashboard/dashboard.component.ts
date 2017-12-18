@@ -12,20 +12,21 @@ import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 export class DashboardComponent {
 
   userName: string;
-  isLoggedIn: boolean;
+  authService: AuthService;
 
-  constructor(private authService: AuthService, private router: Router, private dialog: MatDialog) {
+  constructor(private _authService: AuthService, private router: Router, private dialog: MatDialog) {
+    this.authService = _authService;
     this.authService.getAuthState().subscribe( user => {
-      this.isLoggedIn = (user !== null);
-      this.userName = (this.isLoggedIn) ? user.displayName : 'Sign in';
+      this.userName = (this.authService.isLoggedIn()) ? user.displayName : 'Sign in';
     });
   }
 
-  openDialog() {
+  login() {
+    this.router.navigate(['login']);
+  }
+
+  logout() {
     this.dialog.open(LogoutDialogComponent);
   }
 
-  redirectToLoginPage() {
-    this.router.navigate(['login']);
-  }
 }

@@ -14,7 +14,15 @@
     },
     "versions": "/case_studies/01/short.json",
     "thumbnail": "/assets/img/case-study-preview.png",
-    "avatar": ""
+    "avatar": "",
+    "case_study_permissions":
+    {
+      "read": true,
+      "annotate": true,
+      "contribute": true,
+      "share": true,
+      "delete": false
+    }
   },
   {
     "resource": "/case_studies/02",
@@ -31,6 +39,14 @@
     },
     "versions": "/case_studies/02/short.json",
     "thumbnail": "/assets/img/case-study-preview.png",
-    "avatar": ""
+    "avatar": "",
+    "case_study_permissions":
+    {
+      "read": true,
+      "annotate": false,
+      "contribute": false,
+      "share": false,
+      "delete": false
+    }
   }
 ]

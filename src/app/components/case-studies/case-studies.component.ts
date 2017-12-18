@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../providers/data.service';
+import { AuthService } from '../../providers/auth.service';
+
+async function delay(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
 
 @Component({
   selector: 'app-case-studies',
@@ -8,11 +13,24 @@ import { DataService } from '../../providers/data.service';
 })
 export class CaseStudiesComponent implements OnInit {
 
-  caseStudies: Object;
-  constructor(private dataService: DataService) { }
+  caseStudies: any;
+  authService: AuthService;
 
-  ngOnInit() {
-   this.dataService.getCaseStudiesList()
-     .subscribe(data => this.caseStudies = data);
+  constructor(private _dataService: DataService, private _authService: AuthService) {
+    this.authService = _authService;
   }
+
+  async waitForInteractiveSession() {
+    while (!this.authService.getInteractiveSessionOpened()) {
+      await delay(100);
+    }
+  }
+
+  async ngOnInit() {
+    this.caseStudies = [];
+    await this.waitForInteractiveSession();
+    this._dataService.getCaseStudiesList()
+      .subscribe(data => this.caseStudies = data);
+  }
+
 }
