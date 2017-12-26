@@ -3,7 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
@@ -13,15 +13,15 @@ export class AuthService {
   private user: firebase.User;
   private authState$: Observable<firebase.User>;
 
-  // private base_url = 'http://localhost:8080/nis_api';
-  private base_url = 'http://192.168.100.84:5000/nis_api';
-  private local_base_url = '/assets/RESTful/';
+  private base_url = 'https://one.nis.magic-nexus.eu/nis_api';
+  options: any;
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private http: HttpClient) {
     this.authState$ = afAuth.authState;
     this.authState$.subscribe( user => {
       this.user = user;
       if (this.user) {
+        this.updateToken(this.user.refreshToken);
         this.setIdentity()
           .subscribe(
             success => console.log('identity', success),
@@ -60,8 +60,18 @@ export class AuthService {
 
   /** ------------------------------------------------------------- */
 
+  updateToken(token: string) {
+    if (token == null) {
+      this.options = { withCredentials: true };
+    } else {
+      const headers = new HttpHeaders({'Authorization' : 'Bearer ' + token});
+      this.options = { withCredentials: true, headers};
+    }
+    console.log('optiones', this.options);
+  }
+
   openInteractiveSession() {
-    return this.http.post(this.base_url + '/isession', null, { withCredentials: true });
+    return this.http.post(this.base_url + '/isession', null, this.options);
   }
 
   setInteractiveSessionOpened(state: boolean) {
@@ -73,7 +83,7 @@ export class AuthService {
   }
 
   setIdentity() {
-    return this.http.put(this.base_url + '/isession/identity?user=test_user', null, { withCredentials: true });
+    return this.http.put(this.base_url + '/isession/identity?user=test_user', null, this.options);
   }
 
 }

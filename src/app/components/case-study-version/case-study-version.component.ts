@@ -41,9 +41,10 @@ export class CaseStudyVersionComponent implements OnInit {
     this.displayView(event.node.data.view);
   }
 
-  displayView(url) {
-    this.dataService.getViewResource(url)
-      .subscribe( data => this.view = data);
+  displayView(url: string) {
+    console.log('displayView', url);
+    // this.dataService.getViewResource(url)
+    //  .subscribe( data => this.view = data);
   }
 
 }

@@ -18,6 +18,7 @@ export class CaseStudyComponent implements OnInit {
   authService: AuthService;
   versions: TreeNode[];
   selectedVersion: TreeNode;
+  msgs: any;
 
   constructor(private _authService: AuthService,
               private dataService: DataService,
@@ -40,7 +41,7 @@ export class CaseStudyComponent implements OnInit {
   }
 
   showIssues() {
-    if (this.selectedVersion.data.issues.length === 0) {
+    if (this.selectedVersion.data.issues == null || this.selectedVersion.data.issues.length === 0) {
       this.messageService.add({severity: 'success', summary: 'OK!', detail: 'This version has no issues.'});
     } else {
       this.messageService.add({severity: 'warn', summary: 'Warning!', detail: 'Check version issues for more details.'});

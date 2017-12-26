@@ -15,9 +15,11 @@ export class CaseStudiesComponent implements OnInit {
 
   caseStudies: any;
   authService: AuthService;
+  dataService: DataService;
 
   constructor(private _dataService: DataService, private _authService: AuthService) {
     this.authService = _authService;
+    this.dataService = _dataService;
   }
 
   async waitForInteractiveSession() {

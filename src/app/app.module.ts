@@ -39,7 +39,6 @@ import { CaseStudyVersionComponent } from './components/case-study-version/case-
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { AuthService } from './providers/auth.service';
-import { AuthGuardService } from './providers/auth-guard.service';
 import { DataService } from './providers/data.service';
 
 const appRoutes: Routes = [
@@ -104,7 +103,7 @@ const fireConfig = {
     MatProgressSpinnerModule,
     MatDialogModule,
   ],
-  providers: [AuthService, AuthGuardService, DataService],
+  providers: [AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

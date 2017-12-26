@@ -1,31 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class DataService {
 
-  // private host = 'http://localhost:8080';
-  private host = 'http://192.168.100.84:5000';
-  private api_prefix = '/nis_api';
-  private local_base_url = '/assets/RESTful/';
+  host = 'https://one.nis.magic-nexus.eu';
+  api_prefix = '/nis_api';
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   getCaseStudiesList() {
-    return this.http.get(this.host + this.api_prefix + '/case_studies/', { withCredentials: true });
+    return this.http.get(this.host + this.api_prefix + '/case_studies/', this.authService.options);
   }
 
   getCaseStudy(caseStudyUrl: string) {
-    return this.http.get(this.host + caseStudyUrl, { withCredentials: true });
+    return this.http.get(this.host + caseStudyUrl, this.authService.options);
   }
 
   getCaseStudyVersion(caseStudyVersionUrl: string) {
-    return this.http.get(this.host + this.api_prefix + caseStudyVersionUrl, { withCredentials: true });
+    return this.http.get(this.host + caseStudyVersionUrl, this.authService.options);
   }
 
   getViewResource(resourceUrl: string) {
-    return this.http.get(this.host + this.api_prefix + resourceUrl, { withCredentials: true });
+    return this.http.get(this.host + resourceUrl, this.authService.options);
   }
 
 }

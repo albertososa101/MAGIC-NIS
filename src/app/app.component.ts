@@ -8,9 +8,10 @@ import { AuthService } from './providers/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    this.authService.updateToken(null);
     if (!this.authService.getInteractiveSessionOpened()) {
       this.authService.openInteractiveSession()
         .subscribe(

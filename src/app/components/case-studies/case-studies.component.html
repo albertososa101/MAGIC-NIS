@@ -3,14 +3,13 @@
     <div class="ui-g-12 ui-lg-3 ui-md-6 ui-sm-12">
       <mat-card>
         <mat-card-header>
-          <!--<div mat-card-avatar class="avatar-image" [ngStyle]="{ 'background-image': 'url(' + caseStudy.thumbnail + ')', 'background-size': 'cover' }">
-          </div>-->
+          <div mat-card-avatar class="avatar-image" [ngStyle]="{ 'background-image': 'url(' + dataService.host + caseStudy.avatar + ')', 'background-size': 'cover' }">
+          </div>
           <mat-card-title>{{ caseStudy.name }}</mat-card-title>
           <mat-card-subtitle><p><small>{{ caseStudy.description }}</small></p></mat-card-subtitle>
         </mat-card-header>
         <a [routerLink]="['../case_studies', caseStudy.versions]">
-          <!--<img mat-card-image src="{{ caseStudy.thumbnail }}" alt="">-->
-          <p>IMAGEN</p>
+          <img mat-card-image src="{{ dataService.host + caseStudy.thumbnail }}" alt="PREVIEW">
         </a>
         <mat-card-actions style="text-align: right">
           <button mat-icon-button color="accent" (click)="op.toggle($event)" (mouseover)="op.show($event)" (mouseleave)="op.hide($event)">
